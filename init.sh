@@ -41,9 +41,9 @@ echo "##    ${AUTHOR4}                                                     ##"
 echo "##    ${AUTHOR5}                                                          ##"
 echo "##                                                                            ##"
 echo "################################################################################"
+sleep 1
 
 # Create a suspense
-echo 
 echo "."
 sleep 0.5
 echo "."
@@ -51,7 +51,7 @@ sleep 0.5
 echo "."
 sleep 0.5
 echo "."
-sleep 0.5
+sleep 1 
 
 
 # Clear the project
@@ -63,6 +63,12 @@ echo "##                                                                        
 echo "################################################################################"
 rm -rf $TARGET
 sleep 1
+echo "."
+sleep 0.4
+echo "."
+sleep 0.4
+echo "."
+sleep 1
 
 # Create needed folders
 echo
@@ -73,6 +79,12 @@ echo "##                                                                        
 echo "################################################################################"
 mkdir -p $TMP
 sleep 1
+echo "."
+sleep 0.4
+echo "."
+sleep 0.4
+echo "."
+sleep 1
 
 # Cloning the project
 echo
@@ -82,7 +94,35 @@ echo "## Cloning the project.                                                   
 echo "##                                                                            ##"
 echo "################################################################################"
 cd $TMP
-echo 
 sleep 1
-git clone https://github.com/victorborba7/Projeto-Lab-ES.git
+echo "."
+sleep 0.4
+echo "."
+sleep 0.4
+echo "."
+sleep 1
 
+echo 
+git clone https://github.com/victorborba7/Projeto-Lab-ES.git
+sleep 1
+echo "."
+sleep 0.4
+echo "."
+sleep 0.4
+echo "."
+sleep 1
+
+# Install JBoss EAP
+echo 
+echo "################################################################################"
+echo "##                                                                            ##"
+echo "## Installing JBoss EAP $VERSION.                                                  ##"
+echo "##                                                                            ##"
+echo "################################################################################"
+sleep 1
+echo "."
+sleep 0.4
+echo "."
+sleep 0.4
+echo "."
+sleep 1
