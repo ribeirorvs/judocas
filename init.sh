@@ -7,6 +7,7 @@ AUTHOR4="Victor Vasconcellos"
 AUTHOR5="Marcello Nardi"
 PROJECT="Lab. Eng. Software - Judocas web version"
 TARGET=./target
+TMP=$TARGET/tmp
 JBOSS_HOME=$TARGET/EAP-7.2.0
 SERVER_DIR=$JBOSS_HOME/standalone/deployments
 SERVER_CONF=$JBOSS_HOME/standalone/configuration
@@ -20,10 +21,11 @@ PROJECT_GIT_REPO=https://github.com/victorborba7/Projeto-Lab-ES
 # clear screen.
 clear
 
+# Presente this script
 echo 
 echo "################################################################################"
 echo "##                                                                            ##"
-echo "## Configurando a aplicação                                                   ##"
+echo "## Configurando a aplicação:                                                  ##"
 echo "##                                                                            ##"
 echo "##            ##### #    # ####    ###   ###    ###    ###                    ##"
 echo "##              #   #    # #   #  #   # #   #  #   #  #                       ##"
@@ -39,3 +41,48 @@ echo "##    ${AUTHOR4}                                                     ##"
 echo "##    ${AUTHOR5}                                                          ##"
 echo "##                                                                            ##"
 echo "################################################################################"
+
+# Create a suspense
+echo 
+echo "."
+sleep 0.5
+echo "."
+sleep 0.5
+echo "."
+sleep 0.5
+echo "."
+sleep 0.5
+
+
+# Clear the project
+echo
+echo "################################################################################"
+echo "##                                                                            ##"
+echo "##  Removing folders from old version.                                        ##"
+echo "##                                                                            ##"
+echo "################################################################################"
+rm -rf $TARGET
+sleep 1
+
+# Create needed folders
+echo
+echo "################################################################################"
+echo "##                                                                            ##"
+echo "## Creatin folders for new version.                                           ##"
+echo "##                                                                            ##"
+echo "################################################################################"
+mkdir -p $TMP
+sleep 1
+
+# Cloning the project
+echo
+echo "################################################################################"
+echo "##                                                                            ##"
+echo "## Cloning the project.                                                       ##"
+echo "##                                                                            ##"
+echo "################################################################################"
+cd $TMP
+echo 
+sleep 1
+git clone https://github.com/victorborba7/Projeto-Lab-ES.git
+
