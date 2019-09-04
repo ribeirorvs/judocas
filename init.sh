@@ -43,86 +43,28 @@ echo "##                                                                        
 echo "################################################################################"
 sleep 1
 
-# Create a suspense
-echo "."
-sleep 0.5
-echo "."
-sleep 0.5
-echo "."
-sleep 0.5
-echo "."
-sleep 1 
-
-
 # Clear the project
 echo
-echo "################################################################################"
-echo "##                                                                            ##"
-echo "##  Removing folders from old version.                                        ##"
-echo "##                                                                            ##"
-echo "################################################################################"
+echo " Removing folders from old version."
 rm -rf $TARGET
-sleep 1
-echo "."
-sleep 0.4
-echo "."
-sleep 0.4
-echo "."
-sleep 1
 
 # Create needed folders
 echo
-echo "################################################################################"
-echo "##                                                                            ##"
-echo "## Creatin folders for new version.                                           ##"
-echo "##                                                                            ##"
-echo "################################################################################"
+echo " Creatin folders for new version."
 mkdir -p $TMP
-sleep 1
-echo "."
-sleep 0.4
-echo "."
-sleep 0.4
-echo "."
-sleep 1
 
 # Cloning the project
 echo
-echo "################################################################################"
-echo "##                                                                            ##"
-echo "## Cloning the project.                                                       ##"
-echo "##                                                                            ##"
-echo "################################################################################"
+echo " Cloning the project."
 cd $TMP
-sleep 1
-echo "."
-sleep 0.4
-echo "."
-sleep 0.4
-echo "."
-sleep 1
 
 echo 
 git clone https://github.com/victorborba7/Projeto-Lab-ES.git
-sleep 1
-echo "."
-sleep 0.4
-echo "."
-sleep 0.4
-echo "."
-sleep 1
+cd ../../
 
 # Install JBoss EAP
 echo 
-echo "################################################################################"
-echo "##                                                                            ##"
-echo "## Installing JBoss EAP $VERSION.                                                  ##"
-echo "##                                                                            ##"
-echo "################################################################################"
-sleep 1
-echo "."
-sleep 0.4
-echo "."
-sleep 0.4
-echo "."
-sleep 1
+echo " Installing JBoss EAP $VERSION."
+
+java -jar $SRC_DIR/$EAP ./support/auto.xml
+
