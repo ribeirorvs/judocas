@@ -41,9 +41,17 @@ echo "##    ${AUTHOR4}                                                     ##"
 echo "##    ${AUTHOR5}                                                          ##"
 echo "##                                                                            ##"
 echo "################################################################################"
+echo
 sleep 1
 
-# Clear the project
+# Verify if the JBoss EAP installer is present
+if [ -r $SRC_DIR/$EAP ] || [ -L $SRC_DIR/$EAP ]; then
+	echo "Product sources are present..."
+else
+	echo "Need to download $EAP installer from http://developer.redhat.com"
+	echo "and place it in the $SRC_DIR directory to proceed..."
+fi
+
 echo
 echo " Removing folders from old version."
 rm -rf $TARGET
