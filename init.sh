@@ -53,17 +53,24 @@ else
 fi
 echo
 
-#Check if exist an old version of the application
+# Check if exist an old version of the application
 if [ -x $TARGET ]; then
 	echo " Removing folders from old version."
 	echo
 	rm -rf $TARGET
 fi
 
-# Create needed folders
-echo
-echo " Creatin folders for new version."
-mkdir -p $TMP
+# Install JBoss EAP
+echo "Installing the JBoss EAP..."
+echo 
+java -jar $SRC_DIR/$EAP ./support/auto.xml
+echo 
+
+if [ $? -ne 0 ]; then
+	echo
+	echo "Error occured during JBoss EAP installation!"
+fi
+
 
 # Cloning the project
 echo
