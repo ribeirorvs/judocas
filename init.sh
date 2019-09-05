@@ -51,10 +51,14 @@ else
 	echo "Need to download $EAP installer from http://developer.redhat.com"
 	echo "and place it in the $SRC_DIR directory to proceed..."
 fi
-
 echo
-echo " Removing folders from old version."
-rm -rf $TARGET
+
+#Check if exist an old version of the application
+if [ -x $TARGET ]; then
+	echo " Removing folders from old version."
+	echo
+	rm -rf $TARGET
+fi
 
 # Create needed folders
 echo
