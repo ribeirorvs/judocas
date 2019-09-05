@@ -79,7 +79,7 @@ echo
 echo " Cloning the project's Git repo from: $PROJECT_GIT_REPO"
 echo
 
-git clone $PROJECT_GIT_REPO.git $TMP
+git clone $PROJECT_GIT_REPO.git $SRC_APP
 echo 
 
 echo " - Deploying the application..."
