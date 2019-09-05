@@ -8,6 +8,7 @@ AUTHOR5="Marcello Nardi"
 PROJECT="Lab. Eng. Software - Judocas web version"
 TARGET=./target
 TMP=$TARGET/tmp
+APP=Projeto-Lab-ES
 JBOSS_HOME=$TARGET/EAP-7.2.0
 SERVER_DIR=$JBOSS_HOME/standalone/deployments
 SERVER_CONF=$JBOSS_HOME/standalone/configuration
@@ -67,10 +68,34 @@ java -jar $SRC_DIR/$EAP ./support/auto.xml
 echo 
 
 if [ $? -ne 0 ]; then
-	echo
 	echo "Error occured during JBoss EAP installation!"
+	echo
 fi
 
+echo " - Setting up the project..."
+echo
+
+echo " Cloning the project's Git repo from: $PROJECT_GIT_REPO"
+echo
+
+git clone $PROJECT_GIT_REPO.git $TMP
+echo 
+
+echo " - Deploying the application..."
+echo
+
+echo " Test the application"
+echo 
+
+mvn clean test
+
+if [ $? -ne 0 ]; then
+        echo "Error occured during application tests!"
+        echo
+fi
+
+
+cd $TMP/$APP
 
 # Cloning the project
 echo
