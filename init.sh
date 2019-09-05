@@ -52,6 +52,7 @@ if [ -r $SRC_DIR/$EAP ] || [ -L $SRC_DIR/$EAP ]; then
 else
 	echo "Need to download $EAP installer from http://developer.redhat.com"
 	echo "and place it in the $SRC_DIR directory to proceed..."
+	exit
 fi
 echo
 
