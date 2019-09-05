@@ -9,6 +9,7 @@ PROJECT="Lab. Eng. Software - Judocas web version"
 TARGET=./target
 TMP=$TARGET/tmp
 APP=Projeto-Lab-ES
+SRC_APP=$TMP/$APP
 JBOSS_HOME=$TARGET/EAP-7.2.0
 SERVER_DIR=$JBOSS_HOME/standalone/deployments
 SERVER_CONF=$JBOSS_HOME/standalone/configuration
@@ -87,6 +88,7 @@ echo
 echo " Test the application"
 echo 
 
+cd $SRC_APP
 mvn clean test
 
 if [ $? -ne 0 ]; then
@@ -104,19 +106,23 @@ if [ $? -ne 0 ]; then
         echo
 fi
 
+echo " Deploy the applicatuon"
+echo 
+cd ../../../
+cp $SRC_APP/target/judocas.war $SERVER_DIR
 
-# Cloning the project
+echo " - Clean up..."
+echo 
+
+rm -rf $TMP
+
+echo "Now you can start the application with $SERVER_BIN/standalone.sh"
 echo
-echo " Cloning the project."
-cd $TMP
-
+echo "Look at http://localhost:8080/judocas"
 echo 
-git clone https://github.com/victorborba7/Projeto-Lab-ES.git
-cd ../../
+echo "JBoss user:	eapAdmin"
+echo "      password:	judocas#1"
+echo
 
-# Install JBoss EAP
-echo 
-echo " Installing JBoss EAP $VERSION."
-
-java -jar $SRC_DIR/$EAP ./support/auto.xml
-
+echo "Setup complete."
+echo
