@@ -94,8 +94,16 @@ if [ $? -ne 0 ]; then
         echo
 fi
 
+echo " Build the apllication"
+echo
 
-cd $TMP/$APP
+mvn clean install -DskipTests
+
+if [ $? -ne 0 ]; then
+        echo "Error occured during application build"
+        echo
+fi
+
 
 # Cloning the project
 echo
