@@ -61,6 +61,11 @@ if [ -x $TARGET ]; then
 	echo " Removing folders from old version."
 	echo
 	rm -rf $TARGET
+	if [ $? -ne 0 ]; then
+		echo "Cannot remove folders from old version!"
+		echo
+		exit
+	fi
 fi
 
 # Install JBoss EAP
@@ -72,6 +77,7 @@ echo
 if [ $? -ne 0 ]; then
 	echo "Error occured during JBoss EAP installation!"
 	echo
+	exit
 fi
 
 echo " - Setting up the project..."
@@ -95,6 +101,7 @@ mvn clean test
 if [ $? -ne 0 ]; then
         echo "Error occured during application tests!"
         echo
+	exit
 fi
 
 echo " Build the apllication"
@@ -105,6 +112,7 @@ mvn clean install -DskipTests
 if [ $? -ne 0 ]; then
         echo "Error occured during application build"
         echo
+	exit
 fi
 
 echo " Deploy the applicatuon"
