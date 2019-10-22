@@ -1,0 +1,3 @@
+batch
+module add --name=org.mariadb --resources=/home/roribeir/Downloads/mysql-connector-java-8.0.17/mysql-connector-java-8.0.17.jar --dependencies=javax.api,javax.transaction.api
+run-batch
