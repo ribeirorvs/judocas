@@ -1,0 +1,3 @@
+batch
+/subsystem=datasources/data-source=MariaDBDS:test-connection-in-pool
+run-batch

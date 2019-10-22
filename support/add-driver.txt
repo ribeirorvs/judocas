@@ -1,0 +1,3 @@
+batch
+/subsystem=datasources/jdbc-driver=mariadb:add(driver-module-name=org.mariadb, driver-name=mariadb)
+run-batch
