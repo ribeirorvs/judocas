@@ -58,26 +58,34 @@ echo
 
 # Check if exist an old version of the application
 if [ -x $TARGET ]; then
-	echo " Removing folders from old version."
+	echo " Old version found, going to deploy the application."
 	echo
-	rm -rf $TARGET
+else
+	# Install JBoss EAP
+	echo "Installing the JBoss EAP..."
+	echo 
+	java -jar $SRC_DIR/$EAP ./support/auto.xml
+	echo 
+
 	if [ $? -ne 0 ]; then
-		echo "Cannot remove folders from old version!"
+		echo "Error occured during JBoss EAP installation!"
 		echo
 		exit
 	fi
-fi
 
-# Install JBoss EAP
-echo "Installing the JBoss EAP..."
-echo 
-java -jar $SRC_DIR/$EAP ./support/auto.xml
-echo 
-
-if [ $? -ne 0 ]; then
-	echo "Error occured during JBoss EAP installation!"
+	# Creating database connection
+	echo "Creating database connection..."
 	echo
-	exit
+	echo "Starting EAP to create the connection"
+	echo
+	$SERVER_BIN/standalone.sh &
+	sleep 10
+	echo "Creatind the connection"
+	$SERVER_BIN/jboss-cli.sh -c --file=support/add-datasource.txt
+	echo
+	echo "Clossing EAP"
+	kill $(ps -aux |grep EAP-7.2.0/standalone | cut -d ' ' -f2)
+	echo
 fi
 
 echo " - Setting up the project..."
@@ -115,7 +123,7 @@ if [ $? -ne 0 ]; then
 	exit
 fi
 
-echo " Deploy the applicatuon"
+echo " Deploy the application"
 echo 
 cd ../../../
 cp $SRC_APP/target/judocas.war $SERVER_DIR

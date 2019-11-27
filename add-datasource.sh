@@ -14,36 +14,48 @@ echo "Adding the module"
 echo
 $SERVER_BIN/jboss-cli.sh -c file=$SUPPORT_DIR/add-module.txt
 
-if [$? -ne 0] then
+if [ $? -ne 0]; then
 	echo "Cannot create the module"
 	echo
 	exit
+fi
+
+sleep 10
 
 echo "Adding the JDBC driver"
 echo
 $SERVER_BIN/jboss-cli.sh -c file=$SUPPORT_DIR/add-driver.txt
 
-if [ $? -ne 0] then
+if [ $? -ne 0]; then
 	echo "Cannot create the driver"
 	echo
 	exit
+fi
+
+sleep 10
 
 echo "Adding the datasource"
 echo
 $SERVER_BIN/jboss-cli.sh -c file=$SUPPORT_DIR/add-datasource.txt
 
-if [ $? -ne 0] then
+if [ $? -ne 0]; then
 	echo "Cannot create the datasorce"
 	echo
 	exit
+fi
+
+sleep 10
 
 echo "Testing the connection"
 echo
 $SERVER_BIN/jboss-cli.sh -f file=$SUPPORT_DIR/test-connection.txt
 
-if [ $? -ne 0] then
+if [ $? -ne 0]; then
 	echo "Connection not validated"
 	echo
 	exit
+fi
+
+sleep 10
 
 echo "Datasource configured..."
