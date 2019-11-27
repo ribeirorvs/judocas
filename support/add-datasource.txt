@@ -1,6 +1,3 @@
 batch
-module add --name=org.mariadb --resources=install/mysql-connector-java-8.0.17/mysql-connector-java-8.0.17.jar --dependencies=javax.api,javax.transaction.api
-/subsystem=datasources/jdbc-driver=mariadb:add(driver-module-name=org.mariadb, driver-name=mariadb)
 data-source add --name=MariaDBDS --jndi-name=java:jboss/judocas --driver-name=mariadb --connection-url=jdbc:mysql://localhost:3306/judocas --user-name=judocas --password=judocas --validate-on-match=true --background-validation=false --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter
-/subsystem=datasources/data-source=MariaDBDS:test-connection-in-pool
 run-batch

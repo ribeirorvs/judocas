@@ -80,7 +80,13 @@ else
 	echo
 	$SERVER_BIN/standalone.sh &
 	sleep 10
-	echo "Creatind the connection"
+	echo "Add module"
+	$SERVER_BIN/jboss-cli.sh --file=support/add-module.txt
+	echo
+	echo "Add driver"
+	$SERVER_BIN/jboss-cli.sh -c --file=support/add-driver.txt
+	echo
+	echo "Add datasource"
 	$SERVER_BIN/jboss-cli.sh -c --file=support/add-datasource.txt
 	echo
 	echo "Clossing EAP"
